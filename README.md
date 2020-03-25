@@ -54,7 +54,6 @@ sqlite> select distinct inet_mask(ip,24) || "/24" from status order by inet_pton
 <br />
 
 #### OS X sqlite-inetfuncs install:
---
 
 The sqlite3 version shipped with OS X does not have the '.load' command enabled. To workaround this, install the latest version of sqlite using brew:
 
