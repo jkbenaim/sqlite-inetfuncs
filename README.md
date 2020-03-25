@@ -50,8 +50,9 @@ sqlite> select distinct inet_mask(ip,24) || "/24" from status order by inet_pton
 10.2.43.0/24        
 ```
 
-
-### OS X sqlite info and plugin install
+\
+\
+#### OS X sqlite info and plugin install
 
 The sqlite3 version shipped with OS X does not have the '.load' command enabled. To workaround this, install the latest version of sqlite using brew:
 
