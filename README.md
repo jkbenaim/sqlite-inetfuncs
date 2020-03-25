@@ -50,3 +50,31 @@ sqlite> select distinct inet_mask(ip,24) || "/24" from status order by inet_pton
 10.2.43.0/24        
 ```
 
+
+## OS X sqlite info and plugin install
+
+The sqlite3 version shipped with OS X does not have the '.load' command enabled. To workaround this, install the latest version of sqlite using brew:
+
+```
+brew install sqlite
+```
+
+Next, make sure you are using the newly installed Homebrew sqlite and not the OS X installed version (update path or call binary directly):
+
+```
+brew --prefix sqlite
+/usr/local/opt/sqlite/bin/sqlite3
+```
+
+Please note, Gatekeeper will block unverified files/programs from being opened. To workaround this, invoke the following to strip the xattr com.apple.quarantine attribute:
+
+```
+xattr -dr com.apple.quarantine inetfuncs.dylib
+```
+
+Now to use the plugin, load it into the newly Homebrew installed version of sqlite:
+
+```
+/usr/local/opt/sqlite/bin/sqlite3
+sqlite> .load inetfuncs.dylib
+```
